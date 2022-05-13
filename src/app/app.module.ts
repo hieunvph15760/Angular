@@ -8,6 +8,7 @@ import { TableComponent } from './table/table.component';
 import { TableNameComponent } from './table/table-name/table-name.component';
 import { TableStatusComponent } from './table/table-status/table-status.component';
 import { TableGenderComponent } from './table/table-gender/table-gender.component';
+import { AvatarComponent } from './table/avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TableGenderComponent } from './table/table-gender/table-gender.componen
     TableComponent,
     TableNameComponent,
     TableStatusComponent,
-    TableGenderComponent
+    TableGenderComponent,
+    AvatarComponent
   ],
   imports: [
     BrowserModule,

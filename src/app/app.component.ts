@@ -12,7 +12,7 @@ export class AppComponent {
     {
       id:1,
       name:"Hoa",
-      age:20,
+      age:40,
       gender:0,
       avatar:"https://img.lovepik.com/photo/50112/2990.jpg_wh860.jpg",
       status:1

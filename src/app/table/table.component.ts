@@ -10,6 +10,7 @@ export class TableComponent implements OnInit {
   // @Input() users: any;
 
   @Input('users') teachers:any;
+  
   constructor() { }
 
   ngOnInit(): void {
