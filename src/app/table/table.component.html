@@ -11,9 +11,9 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let teacher of teachers">
+        <tr *ngFor="let teacher of teachers let i = index">
           <td>
-            {{teacher.id}}
+            {{i + 1}}
           </td>
           <td>
             <app-table-name [name]="teacher.name"></app-table-name>

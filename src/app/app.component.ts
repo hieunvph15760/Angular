@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular_we16304  hahahahaha';
-
   teachers = [
     {
       id:1,
@@ -26,4 +24,44 @@ export class AppComponent {
       status:0
     }
   ]
+
+
+  showTable = true;
+
+  ClickTable(){
+    this.showTable = !this.showTable;
+  }
+
+  inputValue = {
+    name:'',
+    age:'',
+    gender:'',
+    avatar:'',
+    status:''
+  }
+
+  onInput(event:any, key:'name'|'age'|'gender'|'avatar'|'status'){
+      this.inputValue[key] = event.target.value
+  }
+
+  add(){
+     this.teachers.push({
+       ...this.inputValue,
+       age: +this.inputValue.age,
+       gender: +this.inputValue.gender,
+       status: +this.inputValue.status,
+       avatar: this.inputValue.avatar,
+       id: this.teachers.length + 1
+     });
+     console.log(this.teachers);
+     
+
+     this.inputValue = {
+      name:'',
+      age:'',
+      gender:'0',
+      avatar:'',
+      status:'0'
+    }
+  }
 }
