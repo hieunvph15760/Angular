@@ -12,6 +12,11 @@ import { AvatarComponent } from './table/avatar/avatar.component';
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { ComponentComponent } from './component/component.component';
+import { UserComponent } from './user/user.component';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
+import { HomeComponent } from './home/home.component';
+import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { ComponentComponent } from './component/component.component';
     TableGenderComponent,
     AvatarComponent,
     FormComponent,
-    ComponentComponent
+    ComponentComponent,
+    UserComponent,
+    UserListComponent,
+    UserFormComponent,
+    HomeComponent,
+    ClientLayoutComponent
   ],
   imports: [
     BrowserModule,

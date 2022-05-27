@@ -1,0 +1,2 @@
+<app-user-form (handleSubmit)="onParentSubmit($event)" [inputValues]="formValues"></app-user-form>
+<app-user-list (handleDelete)="onParentDelete($event)" (handleEdit)="onParentEdit($event)"  [user]="users"></app-user-list>

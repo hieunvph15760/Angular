@@ -1,12 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class FormComponent implements OnInit {
+export class UserComponent implements OnInit {
+
   constructor() { }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class FormComponent implements OnInit {
     }
   ]
 
-  inputValues = {
+  formValues = {
     id:0,
     name:'',
     age:0,
@@ -41,47 +41,38 @@ export class FormComponent implements OnInit {
     avatar:''
   }
 
-  onSubmit(userForm: NgForm){
+  onParentSubmit(formData:any){
     const userId = this.users
     .map(user => user.id)
     .sort((a,b)=> a - b);
     const newId = userId[userId.length - 1];
 
-    if(this.inputValues.id == 0){
+    if(this.formValues.id == 0){
       this.users.push({
-        ...userForm.value,
+        ...formData,
         id: newId + 1
       })
-      console.log(this.users);
     }else{
-      const idx = this.users.findIndex((user) => user.id === this.inputValues.id)
+      const idx = this.users.findIndex((user) => user.id === this.formValues.id)
       console.log(idx);
       if(idx > -1){
         this.users[idx] = {
-          ...userForm.value,
-          id: this.inputValues.id
+          ...formData,
+          id: this.formValues.id
         };
       }
     }
-
-   
-    userForm.resetForm({
-      name:'',
-      age:0,
-      email:'',
-      phone:'',
-      avartar:''
-    });
   }
 
-  remove(id:number){
-    this.users = this.users.filter((user) => user.id !== id);
+  onParentDelete(id:number){
+    this.users = this.users.filter(user => user.id !== id);
   }
 
-  onEdit(id:number){
-    const editUser = this.users.find((user)=> user.id === id);
+  onParentEdit(id:number){
+    const editUser = this.users.find((user:any)=> user.id === id);
     if(editUser){
-        this.inputValues = {...editUser};
+        return this.formValues = {...editUser};
     }
+    return alert("haha không tìm thấy id huhu !");
   }
 }
