@@ -1,3 +1,4 @@
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserComponent } from './user/user.component';
@@ -20,24 +21,21 @@ const routes: Routes = [
       }
     ]
   },
-  // {
-  //   path:'user',
-  //   component:UserComponent,
-  //   children:[
-  //     // {
-  //     //   path:'',
-  //     //   component: UserComponent
-  //     // },
-  //     {
-  //       path:'create',
-  //       component:UserFormComponent
-  //     },
-  //     {
-  //       path:'edit',
-  //       component:UserComponent
-  //     }
-  //   ]
-  // }
+  {
+    path:"admin",
+    component:AdminLayoutComponent,
+    children:[
+      {
+        path:'',
+        redirectTo: 'users',
+        pathMatch:'full'
+      },
+      {
+        path:'users',
+        component: UserComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
