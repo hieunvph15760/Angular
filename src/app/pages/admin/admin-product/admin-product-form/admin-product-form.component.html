@@ -1,0 +1,29 @@
+<div class="container">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="">
+                Name
+            </label>
+            <!-- Định nghĩa thuộc tính để lắng nghe input -->
+            <input type="text" class="form-control" formControlName="name">
+            <app-component [field]="productForm.get('name')" key="Tên sản phẩm"></app-component>
+        </div>
+        <div class="form-group">
+            <label for="">
+                Price
+            </label>
+            <input type="text" class="form-control" formControlName="price">
+            <app-component [field]="productForm.get('price')" key="Giá"></app-component>
+        </div>
+        <div class="form-group">
+            <label for="">
+                Image
+            </label>
+            <input type="text" class="form-control" formControlName="image">
+            <app-component [field]="productForm.get('image')" key="Ảnh"></app-component>
+        </div>
+        <button class="btn btn-success" [disabled]="!productForm.valid">
+            Thêm
+        </button>
+    </form>
+</div>

@@ -18,7 +18,14 @@ import { UserFormComponent } from './user/user-form/user-form.component';
 import { HomeComponent } from './home/home.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-
+import { AdminProductListComponent } from './pages/admin/admin-product/admin-product-list/admin-product-list.component';
+import { AdminProductFormComponent } from './pages/admin/admin-product/admin-product-form/admin-product-form.component';
+import { AdminProductDetailComponent } from './pages/admin/admin-product/admin-product-detail/admin-product-detail.component';
+import {HttpClientModule} from "@angular/common/http";
+import { ProductsComponent } from './pages/client/products/products.component';
+import { ContactComponent } from './pages/client/contact/contact.component';
+import { ProductDetailsComponent } from './pages/client/product-details/product-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,13 +41,21 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     UserFormComponent,
     HomeComponent,
     ClientLayoutComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    AdminProductListComponent,
+    AdminProductFormComponent,
+    AdminProductDetailComponent,
+    ProductsComponent,
+    ContactComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

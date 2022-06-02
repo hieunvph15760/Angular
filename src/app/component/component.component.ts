@@ -10,6 +10,7 @@ export class ComponentComponent implements OnInit {
   @Input() field:any
   @Input() key:string;
 
+  
 
   constructor() {
     this.key = ''
