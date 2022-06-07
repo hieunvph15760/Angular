@@ -1,21 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TableComponent } from './table/table.component';
-import { TableNameComponent } from './table/table-name/table-name.component';
-import { TableStatusComponent } from './table/table-status/table-status.component';
-import { TableGenderComponent } from './table/table-gender/table-gender.component';
-import { AvatarComponent } from './table/avatar/avatar.component';
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { ComponentComponent } from './component/component.component';
-import { UserComponent } from './user/user.component';
-import { UserListComponent } from './user/user-list/user-list.component';
-import { UserFormComponent } from './user/user-form/user-form.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './pages/client/home/home.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AdminProductListComponent } from './pages/admin/admin-product/admin-product-list/admin-product-list.component';
@@ -26,19 +17,24 @@ import { ProductsComponent } from './pages/client/products/products.component';
 import { ContactComponent } from './pages/client/contact/contact.component';
 import { ProductDetailsComponent } from './pages/client/product-details/product-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { CategoriesListComponent } from './pages/admin/admin-categories/categories-list/categories-list.component';
+import { CategoriesFormComponent } from './pages/admin/admin-categories/categories-form/categories-form.component';
+import { ToastrModule } from 'ngx-toastr';
+import { RegisterComponent } from './pages/auth/register/register.component';
+
+
+registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent,
-    TableNameComponent,
-    TableStatusComponent,
-    TableGenderComponent,
-    AvatarComponent,
     FormComponent,
     ComponentComponent,
-    UserComponent,
-    UserListComponent,
-    UserFormComponent,
     HomeComponent,
     ClientLayoutComponent,
     AdminLayoutComponent,
@@ -47,7 +43,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminProductDetailComponent,
     ProductsComponent,
     ContactComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    LoginComponent,
+    CategoriesListComponent,
+    CategoriesFormComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +55,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

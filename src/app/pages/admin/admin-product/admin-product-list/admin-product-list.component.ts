@@ -1,6 +1,9 @@
+import { CategoriesService } from 'src/app/services/categories.service';
+import { TypeCategories } from './../../../../types/Categories';
 import { ProductService } from './../../../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/types/Product';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-product-list',
@@ -9,13 +12,22 @@ import { Product } from 'src/app/types/Product';
 })
 export class AdminProductListComponent implements OnInit {
   products: Product[];
-  constructor(private ProductService:ProductService) {
+  categories: TypeCategories[]
+  constructor(
+    private ProductService:ProductService,
+    private CategoriesService: CategoriesService,
+    private toastr: ToastrService
+    ) {
     this.products = []
+    this.categories = []
    }
 
   onGetList(){
     this.ProductService.getProducts().subscribe((data) =>{
       this.products = data;
+    })
+    this.CategoriesService.getCategories().subscribe(data =>{
+      this.categories = data;
     })
   }
 
@@ -28,9 +40,11 @@ export class AdminProductListComponent implements OnInit {
       const cofirmDelete = confirm("Bạn có muốn xóa không ?");
       if(cofirmDelete && _id){
           this.ProductService.removeProduct(_id).subscribe((data)=>{
+            this.toastr.success("Xóa thành công !")
             this.onGetList();
           })          
       }
   }
+
 
 }

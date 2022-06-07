@@ -1,0 +1,22 @@
+<div class="container">
+    <form [formGroup]="CategoryForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="">
+                Name
+            </label>
+            <!-- Định nghĩa thuộc tính để lắng nghe input -->
+            <input type="text" class="form-control" formControlName="name">
+            <app-component [field]="CategoryForm.get('name')" key="Tên danh mục"></app-component>
+        </div>
+        <div class="form-group">
+            <label for="">
+                Status
+            </label>
+            <input type="text" class="form-control" formControlName="status">
+            <app-component [field]="CategoryForm.get('status')" key="Status"></app-component>
+        </div>
+        <button class="btn btn-success" [disabled]="!CategoryForm.valid">
+            {{CategoryId ? "Sửa" : "Thêm"}}
+        </button>
+    </form>
+</div>

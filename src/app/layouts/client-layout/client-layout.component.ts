@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-layout',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client-layout.component.css']
 })
 export class ClientLayoutComponent implements OnInit {
+ 
+  user:any
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private router:Router) { 
+      
   }
 
+  ngOnInit(): void {
+    if(localStorage.getItem('user') || ""){
+      this.user = JSON.parse(localStorage.getItem('user') || "");
+    }
+  }
+  
+  logOut(){
+    localStorage.removeItem('user');
+    this.router.navigateByUrl('/auth/login');
+  }
+  
 }

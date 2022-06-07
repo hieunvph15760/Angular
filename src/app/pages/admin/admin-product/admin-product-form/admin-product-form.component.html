@@ -17,13 +17,43 @@
         </div>
         <div class="form-group">
             <label for="">
+                Sale_price
+            </label>
+            <input type="text" class="form-control" formControlName="sale_price">
+            <app-component [field]="productForm.get('sale_price')" key="Sale_price"></app-component>
+        </div>
+        <div class="form-group">
+            <label for="">
                 Image
             </label>
             <input type="text" class="form-control" formControlName="image">
             <app-component [field]="productForm.get('image')" key="Ảnh"></app-component>
         </div>
+        <div class="form-group">
+            <label for="">
+                Descripton
+            </label>
+            <input type="text" class="form-control" formControlName="description">
+            <app-component [field]="productForm.get('description')" key="Descripton"></app-component>
+        </div>
+        <div class="form-group">
+            <label for="">
+                Status
+            </label>
+            <input type="text" class="form-control" formControlName="status">
+            <app-component [field]="productForm.get('status')" key="Status"></app-component>
+        </div>
+        <div class="input-group mb-3">
+            <select class="custom-select" id="inputGroupSelect02" formControlName="category">
+                <option *ngFor="let category of listCategories" value={{category._id}}>{{category.name}}</option>
+            </select>
+            <div class="input-group-append">
+              <label class="input-group-text" for="inputGroupSelect02">Category</label>
+            </div>
+            <app-component [field]="productForm.get('category')" key="Category"></app-component>
+        </div>
         <button class="btn btn-success" [disabled]="!productForm.valid">
-            Thêm
+            {{productId ? "Sửa" : "Thêm"}}
         </button>
     </form>
 </div>

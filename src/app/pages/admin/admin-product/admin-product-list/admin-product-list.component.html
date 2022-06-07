@@ -3,20 +3,26 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>STT</th>
                 <th>Name</th>
                 <th>Image</th>
                 <th>Price</th>
+                <th>Sale_price</th>
+                <th>Status</th>
+                <th>Category</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let product of products">
-                <td>{{product._id}}</td>
+            <tr *ngFor="let product of products; let i = index">
+                <td>{{i}}</td>
                 <td>{{product.name}}</td>
-                <td>{{product.image}}</td>
+                <td><img [src]="product.image" alt="" width="70px"></td>
                 <td>{{product.price}}</td>
-                <td><a routerLink="/admin/products/{{product._id}}"><button class="btn btn-info">Xem chi tiết</button></a></td>
+                <td>{{product.sale_price}}</td>
+                <td>{{product.status}}</td>
+                <td *ngFor="let category of categories">{{product.category === category._id ? category.name : ""}}</td>
                 <td><button class="btn btn-info" (click)="onDelete(product._id)">Xóa</button></td>
+                <td><a routerLink="/admin/products/edit/{{product._id}}"><button class="btn btn-info">Sửa</button></a></td>
             </tr>
         </tbody>
     </table>
