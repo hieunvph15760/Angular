@@ -1,3 +1,8 @@
+import { ListContactComponent } from './pages/admin/admin-contact/list-contact/list-contact.component';
+import { UsersFormComponent } from './pages/admin/admin-users/users-form/users-form.component';
+import { ListUsersComponent } from './pages/admin/admin-users/list-users/list-users.component';
+import { CheckOutComponent } from './pages/client/check-out/check-out.component';
+import { CartComponent } from './pages/client/cart/cart.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { ProductsComponent } from './pages/client/products/products.component';
 import { CanAccessAdminGuard } from './guards/can-access-admin.guard';
@@ -35,6 +40,14 @@ const routes: Routes = [
       {
         path:'productDetails/:_id',
         component:ProductDetailsComponent
+      },
+      {
+        path:'cart',
+        component:CartComponent
+      },
+      {
+        path:'checkOut',
+        component:CheckOutComponent
       }
     ]
   },
@@ -96,6 +109,28 @@ const routes: Routes = [
           {
             path:'edit/:_id',
             component:CategoriesFormComponent
+          }
+        ]
+      },
+      {
+        path:'users',
+        children:[
+          {
+            path:'',
+            component:ListUsersComponent
+          },
+          {
+            path:'create',
+            component:UsersFormComponent
+          }
+        ]
+      },
+      {
+        path:'contact',
+        children:[
+          {
+            path:'',
+            component:ListContactComponent
           }
         ]
       }

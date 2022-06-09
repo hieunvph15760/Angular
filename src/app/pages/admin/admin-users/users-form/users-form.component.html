@@ -1,0 +1,36 @@
+<div class="container">
+    <form [formGroup]="UsersForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="">
+                Tên
+            </label>
+            <!-- Định nghĩa thuộc tính để lắng nghe input -->
+            <input type="text" class="form-control" formControlName="name">
+            <app-component [field]="UsersForm.get('name')" key="Tên"></app-component>
+        </div>
+        <div class="form-group">
+            <label for="">
+                Email
+            </label>
+            <input type="text" class="form-control" formControlName="email">
+            <app-component [field]="UsersForm.get('email')" key="Email"></app-component>
+        </div>
+        <div class="form-group">
+            <label for="">
+                Password
+            </label>
+            <input type="text" class="form-control" formControlName="password">
+            <app-component [field]="UsersForm.get('password')" key="Mật khẩu"></app-component>
+        </div>
+        <div class="input-group mb-3">
+            <select class="custom-select" id="inputGroupSelect02" formControlName="role">
+                <option value="0">0</option>
+                <option value="1">1</option>
+            </select>
+            <app-component [field]="UsersForm.get('role')" key="Vai trò"></app-component>
+        </div>
+        <button class="btn btn-success" [disabled]="!UsersForm.valid">
+            Thêm
+        </button>
+    </form>
+</div>

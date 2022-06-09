@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-layout.component.css']
 })
 export class AdminLayoutComponent implements OnInit {
-
+  user:any
   constructor() { }
 
   ngOnInit(): void {
+    // Lấy user
+    if(localStorage.getItem('user') || ""){
+      this.user = JSON.parse(localStorage.getItem('user') || "");
+      console.log(this.user.user.name);
+      
+    }
   }
 
 }

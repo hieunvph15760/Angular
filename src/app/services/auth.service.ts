@@ -4,12 +4,15 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { TypeLoginRequest, TypeLoginResponse, TypeRegister } from '../types/auth';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { 
+  constructor(
+    private http: HttpClient
+    ) { 
 
   }
   

@@ -27,6 +27,11 @@ import { CategoriesListComponent } from './pages/admin/admin-categories/categori
 import { CategoriesFormComponent } from './pages/admin/admin-categories/categories-form/categories-form.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { CartComponent } from './pages/client/cart/cart.component';
+import { CheckOutComponent } from './pages/client/check-out/check-out.component';
+import { ListUsersComponent } from './pages/admin/admin-users/list-users/list-users.component';
+import { UsersFormComponent } from './pages/admin/admin-users/users-form/users-form.component';
+import { ListContactComponent } from './pages/admin/admin-contact/list-contact/list-contact.component';
 
 
 registerLocaleData(en);
@@ -47,7 +52,12 @@ registerLocaleData(en);
     LoginComponent,
     CategoriesListComponent,
     CategoriesFormComponent,
-    RegisterComponent
+    RegisterComponent,
+    CartComponent,
+    CheckOutComponent,
+    ListUsersComponent,
+    UsersFormComponent,
+    ListContactComponent
   ],
   imports: [
     BrowserModule,

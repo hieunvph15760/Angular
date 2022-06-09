@@ -39,4 +39,22 @@ export class ProductsComponent implements OnInit {
       })
   }
 
+  limitBooks(amount:number){
+      this.ProductService.litmitBooks(amount).subscribe(data =>{
+          this.listProducts = data
+      })
+  }
+
+  sortBooks(data:string){
+      this.ProductService.sortBooks(data).subscribe(data =>{
+        this.listProducts = data;
+      })
+  }
+  
+  inputSearch(event:any){
+      this.ProductService.searchBooks(event.target.value).subscribe(data =>{
+        this.listProducts = data;
+      })
+  }
+
 }

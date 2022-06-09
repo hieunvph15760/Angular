@@ -1060,6 +1060,7 @@ section
 	border: none;
 	height: 46px;
 	cursor: pointer;
+	border-radius: 4px;
 }
 .message_submit_btn:hover
 {

@@ -39,23 +39,23 @@
 								<div class="product_sorting_container product_sorting_container_top">
 									<ul class="product_sorting">
 										<li>
-											<span class="type_sorting_text">Sắp xếp</span>
+											<span class="type_sorting_text">Sắp xếp theo giá</span>
 											<i class="fa fa-angle-down"></i>
 											<ul class="sorting_type">
-												<li class="type_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Default Sorting</span></li>
-												<li class="type_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>
-												<li class="type_sorting_btn" data-isotope-option='{ "sortBy": "name" }'><span>Product Name</span></li>
-											</ul>
+												<li (click)="sortBooks('-price')" class="type_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Giảm dần</span></li>
+												<li (click)="sortBooks('price')" class="type_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Tăng dần</span></li>											</ul>
 										</li>
 										<li>
 											<span>Hiển thị</span>
-											<span class="num_sorting_text">6</span>
 											<i class="fa fa-angle-down"></i>
 											<ul class="sorting_num">
-												<li class="num_sorting_btn"><span>6</span></li>
-												<li class="num_sorting_btn"><span>12</span></li>
-												<li class="num_sorting_btn"><span>24</span></li>
+												<li (click)="limitBooks(3)" class="num_sorting_btn"><span>3</span></li>
+												<li (click)="limitBooks(5)" class="num_sorting_btn"><span>5</span></li>
+												<li (click)="limitBooks(10)" class="num_sorting_btn"><span>10</span></li>
 											</ul>
+										</li>
+										<li class="num_sorting_btn">
+											<span><input type="text" (input)="inputSearch($event)" placeholder="Tìm kiếm"></span>
 										</li>
 									</ul>
 
@@ -70,7 +70,7 @@
 											<div class="product_image">
 												<img [src]="product.image" alt="">
 											</div>
-											<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
+											<div *ngIf="product.sale_price != 0" class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>{{product.sale_price}}%</span></div>
 											<div class="product_info">
 												<h6 class="product_name"><a href="single.html">{{product.name}}</a></h6>
 												<div class="product_price">{{product.price - (product.price * product.sale_price / 100) | currency: 'VND'}}<span>{{product.sale_price == 0 ? "" : product.price | currency: 'VND'}}</span></div>

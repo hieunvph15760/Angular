@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(){
     const data = this.registerForm.value;
-    this.AuthService.register(data).subscribe(data =>{
+    this.AuthService.register(data).subscribe(data =>{      
         this.toastr.success("Đăng ký thành công, chuyển đến trang đang nhập sau 3 giây !");
         setTimeout(() => {
             this.router.navigateByUrl("/auth/login");

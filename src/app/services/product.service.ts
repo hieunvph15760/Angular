@@ -31,5 +31,17 @@ export class ProductService {
 
   editProduct (_id:string, data:Product): Observable<Product>{
     return this.http.put<Product>(`${environment.products}/${_id}`,data);
-}
+  }
+
+  litmitBooks(data:number):Observable<Product[]>{
+    return this.http.get<Product[]>(`${environment.litmitBooks}?limit=${data}`);
+  }
+
+  sortBooks(data:string):Observable<Product[]>{
+    return this.http.get<Product[]>(`${environment.litmitBooks}?sort=${data}`);
+  }
+
+  searchBooks(data:string):Observable<Product[]>{
+    return this.http.get<Product[]>(`${environment.litmitBooks}?search=${data}`);
+  }
 }

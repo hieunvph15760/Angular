@@ -7,8 +7,11 @@ const apiUrl = 'http://localhost:3001/api'
 export const environment = {
   production: false,
   products: `${apiUrl}/books`,
+  users: `${apiUrl}/users`,
   categories: `${apiUrl}/categories`,
   categoriesDetails: `${apiUrl}/categoriesDetails`,
+  contact: `${apiUrl}/contact`,
+  litmitBooks: `${apiUrl}/litmitBooks`,
   login: `${apiUrl}/signin`,
   register: `${apiUrl}/signup`
 };
