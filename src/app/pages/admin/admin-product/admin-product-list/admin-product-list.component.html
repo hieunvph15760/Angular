@@ -19,8 +19,11 @@
                 <td><img [src]="product.image" alt="" width="70px"></td>
                 <td>{{product.price}}</td>
                 <td>{{product.sale_price}}</td>
-                <td>{{product.status}}</td>
-                <td *ngFor="let category of categories">{{product.category === category._id ? category.name : ""}}</td>
+                <td>
+                    <button *ngIf="product.status === 1" class="btn btn-success" (click)="updateSatus(product._id,0)">ON</button>
+                    <button *ngIf="product.status === 0" class="btn btn-success" (click)="updateSatus(product._id,1)">OFF</button>
+                </td>
+                <td *ngFor="let category of categories">{{product.category === category._id ? category.name : null}}</td>
                 <td><button class="btn btn-info" (click)="onDelete(product._id)">Xóa</button></td>
                 <td><a routerLink="/admin/products/edit/{{product._id}}"><button class="btn btn-info">Sửa</button></a></td>
             </tr>

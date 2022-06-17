@@ -14,3 +14,7 @@ export type TypeCategoriesDetails = {
     status:number,
     category:string
 }
+
+export type TypeStatusCategories = {
+    status?:number
+}

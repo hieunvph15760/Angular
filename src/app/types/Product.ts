@@ -18,3 +18,7 @@ export type ProductCreate = {
     status:number,
     category:string
 }
+
+export type ProductStatus = {
+    status?:number  //Có thể có hoặc không 
+}

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Product, ProductCreate } from '../types/Product';
+import { Product, ProductCreate,ProductStatus } from '../types/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,10 @@ export class ProductService {
     return this.http.put<Product>(`${environment.products}/${_id}`,data);
   }
 
+  editProductStatus (_id:string, data:ProductStatus): Observable<ProductStatus>{
+    return this.http.put<ProductStatus>(`${environment.products}/${_id}`,data);
+  }
+
   litmitBooks(data:number):Observable<Product[]>{
     return this.http.get<Product[]>(`${environment.litmitBooks}?limit=${data}`);
   }
@@ -42,6 +46,9 @@ export class ProductService {
   }
 
   searchBooks(data:string):Observable<Product[]>{
-    return this.http.get<Product[]>(`${environment.litmitBooks}?search=${data}`);
+    return this.http.get<Product[]>(`${environment.searchBooks}?search=${data}`);
+  }
+  pagination(page:number):Observable<Product[]>{
+    return this.http.get<Product[]>(`${environment.pagination}/${page}`);
   }
 }

@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { CategoriesService } from './../../../../services/categories.service';
 import { Component, OnInit } from '@angular/core';
 import { TypeCategories } from 'src/app/types/Categories';
@@ -9,7 +10,10 @@ import { TypeCategories } from 'src/app/types/Categories';
 })
 export class CategoriesListComponent implements OnInit {
   Categories: TypeCategories[];
-  constructor(private CategoriesService:CategoriesService) {
+  constructor(
+    private CategoriesService:CategoriesService,
+    private toastr: ToastrService
+    ) {
     this.Categories = []
   }
 
@@ -28,8 +32,15 @@ export class CategoriesListComponent implements OnInit {
       if(confirmRemove && _id){
         this.CategoriesService.removeCategory(_id).subscribe(data =>{
           this.onGetList();
+          this.toastr.success("Xóa thành công !")
         })
       }
+  }
+
+  updateStatus(id:string,newStauts:number){
+      this.CategoriesService.editStatusCategory(id,{status:newStauts}).subscribe(data =>{
+        this.onGetList();
+      })
   }
 
 }

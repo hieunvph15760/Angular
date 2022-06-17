@@ -55,6 +55,11 @@ export class ProductsComponent implements OnInit {
       this.ProductService.searchBooks(event.target.value).subscribe(data =>{
         this.listProducts = data;
       })
+
+      // Ko có giữ liệu hiển thị lại listProducts
+      if(event.target.value == ""){
+        this.onGetList();
+      }
   }
 
 }

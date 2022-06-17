@@ -12,8 +12,12 @@ export const environment = {
   categoriesDetails: `${apiUrl}/categoriesDetails`,
   contact: `${apiUrl}/contact`,
   litmitBooks: `${apiUrl}/litmitBooks`,
+  searchBooks: `${apiUrl}/searchBooks`,
   login: `${apiUrl}/signin`,
-  register: `${apiUrl}/signup`
+  register: `${apiUrl}/signup`,
+  order:`${apiUrl}/order`,
+  orderDetails:`${apiUrl}/orderDetails`,
+  pagination:`${apiUrl}/booksPagination`
 };
 
 /*

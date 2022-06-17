@@ -19,7 +19,7 @@
 							<h5>Danh mục sách</h5>
 						</div>
 						<ul class="sidebar_categories">
-							<li *ngFor="let category of listCategories"><a><span (click)="listCategoryDetails(category._id)">{{category.name}}</span></a></li>
+							<li *ngFor="let category of listCategories"><a><span (click)="listCategoryDetails(category._id)" *ngIf="category.status === 1">{{category.name}}</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -66,17 +66,19 @@
 								<div class="product-grid flex flex-wrap">
 									<!-- Product 1 -->
 									<div class="product-item men" *ngFor="let product of listProducts">
-										<div class="product discount product_filter">
-											<div class="product_image">
-												<img [src]="product.image" alt="">
+										<div *ngIf="product.status === 1">
+											<div class="product discount product_filter">
+												<div class="product_image">
+													<img [src]="product.image" alt="">
+												</div>
+												<div *ngIf="product.sale_price != 0" class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>{{product.sale_price}}%</span></div>
+												<div class="product_info">
+													<h6 class="product_name"><a href="single.html">{{product.name}}</a></h6>
+													<div class="product_price">{{product.price - (product.price * product.sale_price / 100) | currency: 'VND'}}<span>{{product.sale_price == 0 ? "" : product.price | currency: 'VND'}}</span></div>
+												</div>
 											</div>
-											<div *ngIf="product.sale_price != 0" class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>{{product.sale_price}}%</span></div>
-											<div class="product_info">
-												<h6 class="product_name"><a href="single.html">{{product.name}}</a></h6>
-												<div class="product_price">{{product.price - (product.price * product.sale_price / 100) | currency: 'VND'}}<span>{{product.sale_price == 0 ? "" : product.price | currency: 'VND'}}</span></div>
-											</div>
+											<div class="red_button add_to_cart_button"><a routerLink="/productDetails/{{product._id}}">Chi tiết sản phẩm</a></div>
 										</div>
-										<div class="red_button add_to_cart_button"><a routerLink="/productDetails/{{product._id}}">Chi tiết sản phẩm</a></div>
 									</div>
 								</div>
 							</div>

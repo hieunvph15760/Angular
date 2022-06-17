@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { TypeCategories,TypeCategoriesDetails } from '../types/Categories';
+import { TypeCategories,TypeCategoriesDetails,TypeStatusCategories } from '../types/Categories';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,10 @@ export class CategoriesService {
 
   editCategory(_id:string, data:TypeCategories): Observable<TypeCategories>{
     return this.http.put<TypeCategories>(`${environment.categories}/${_id}`,data);
+  }
+
+  editStatusCategory(_id:string, data:TypeStatusCategories): Observable<TypeStatusCategories>{
+    return this.http.put<TypeStatusCategories>(`${environment.categories}/${_id}`,data);
   }
 
   getCategory(_id:string):Observable<TypeCategories>{

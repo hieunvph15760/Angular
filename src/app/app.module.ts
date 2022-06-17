@@ -32,6 +32,8 @@ import { CheckOutComponent } from './pages/client/check-out/check-out.component'
 import { ListUsersComponent } from './pages/admin/admin-users/list-users/list-users.component';
 import { UsersFormComponent } from './pages/admin/admin-users/users-form/users-form.component';
 import { ListContactComponent } from './pages/admin/admin-contact/list-contact/list-contact.component';
+import { AdminOrderComponent } from './pages/admin/admin-order/admin-order.component';
+import { AdminOrderDetailsComponent } from './pages/admin/admin-order-details/admin-order-details.component';
 
 
 registerLocaleData(en);
@@ -57,7 +59,9 @@ registerLocaleData(en);
     CheckOutComponent,
     ListUsersComponent,
     UsersFormComponent,
-    ListContactComponent
+    ListContactComponent,
+    AdminOrderComponent,
+    AdminOrderDetailsComponent
   ],
   imports: [
     BrowserModule,

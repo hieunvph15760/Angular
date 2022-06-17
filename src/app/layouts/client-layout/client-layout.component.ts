@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { LocalStorageService } from './../../services/local-storage.service';
 import { TypeCart } from './../../types/cart';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,8 @@ export class ClientLayoutComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private localstorage:LocalStorageService
+    private localstorage:LocalStorageService,
+    private toastr:ToastrService
     ) { 
       
   }
@@ -39,6 +41,7 @@ export class ClientLayoutComponent implements OnInit {
   
   logOut(){
     localStorage.removeItem('user');
+    this.toastr.success("Đăng xuất thành công !");
     this.router.navigateByUrl('/auth/login');
   }
 

@@ -57,7 +57,7 @@
                 <div class="new_arrivals_sorting">
                     <ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
                         <li (click)="allProducts()"class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">Tất cả</li>
-                        <li *ngFor="let category of categories" class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women"><span (click)="listCategoriesDetails(category._id)">{{category.name}}</span></li>
+                        <li *ngFor="let category of categories" class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women"><span (click)="listCategoriesDetails(category._id)" *ngIf="category.status === 1">{{category.name}}</span></li>
                     </ul>
                 </div>
             </div>
@@ -66,20 +66,41 @@
             <div class="col">
                 <div class="product-grid flex flex-wrap">
                     <div class="product-item men mt-3" *ngFor="let product of products">
-                        <div class="product discount product_filter">
-                            <div class="product_image">
-                                <img [src]="product.image" alt="">
+                            <div class="product discount product_filter">
+                                <div class="product_image">
+                                    <img [src]="product.image" alt="">
+                                </div>
+                                <div *ngIf="product.sale_price != 0" class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>{{product.sale_price}}%</span></div>
+                                
+                                <div class="product_info">
+                                    <h6 class="product_name"><a href="single.html">{{product.name}}</a></h6>
+                                    <div class="product_price">{{product.price - (product.price * product.sale_price / 100) | currency: 'VND'}}<span>{{product.sale_price == 0 ? "" : product.price | currency: 'VND'}}</span></div>
+                                </div>
                             </div>
-                            <div *ngIf="product.sale_price != 0" class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>{{product.sale_price}}%</span></div>
-                            
-                            <div class="product_info">
-                                <h6 class="product_name"><a href="single.html">{{product.name}}</a></h6>
-                                <div class="product_price">{{product.price - (product.price * product.sale_price / 100) | currency: 'VND'}}<span>{{product.sale_price == 0 ? "" : product.price | currency: 'VND'}}</span></div>
-                            </div>
-                        </div>
-                        <div class="red_button add_to_cart_button"><a routerLink="/productDetails/{{product._id}}">Chi tiết sản phẩm</a></div>
+                            <div class="red_button add_to_cart_button"><a routerLink="/productDetails/{{product._id}}">Chi tiết sản phẩm</a></div>
                     </div>
                 </div>
+                <!-- <div class="row mt-12">
+                    <nav aria-label="Page navigation example mt-10">
+                        <ul class="pagination">
+                          <li class="page-item">
+                            <a class="page-link" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link" (click)="nextPagination(1)">1</a></li>
+                          <li class="page-item"><a class="page-link" (click)="nextPagination(2)">2</a></li>
+                          <li class="page-item"><a class="page-link" (click)="nextPagination(3)">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                </div> -->
             </div>
         </div>
     </div>

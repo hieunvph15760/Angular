@@ -24,12 +24,12 @@ export class HomeComponent implements OnInit {
   onGetList(){
     // Lấy sản phẩm
     this.ProductService.getProducts().subscribe((data) =>{
-      this.products = data;
+      this.products = data.filter(item => item.status === 1)
     })
     
     // Lấy danh mục
     this.CategoriesService.getCategories().subscribe(data =>{
-      this.categories = data;
+      this.categories = data.filter(item => item.status === 1);
     })
   }
 
@@ -43,7 +43,14 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  // Lấy tất cả sản phẩm
   allProducts(){
     this.onGetList();
   }
+
+  // nextPagination(pagination:number){
+  //   this.ProductService.pagination(pagination).subscribe(data =>{
+  //     this.products = data
+  //   })
+  // }
 }

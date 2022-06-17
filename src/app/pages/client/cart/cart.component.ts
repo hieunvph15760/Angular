@@ -10,16 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class CartComponent implements OnInit {
   cart:TypeCart[]
   toltalMoney:number;
-  tongTien:number;
   constructor(
     private toastr:ToastrService
     ) { 
     this.cart = []
     this.toltalMoney = 0
-    this.tongTien = 0
   }
 
-  getCart(){}
 
   ngOnInit(): void {
     // Lấy giỏ hàng
@@ -27,10 +24,9 @@ export class CartComponent implements OnInit {
       this.cart = JSON.parse(localStorage.getItem("cart") || "[]")
     }
 
-    // Tính tổng tiền phải trả
-    this.cart.forEach((item)=>{
-        this.toltalMoney += item.quantity * (item.price - (item.price * item.sale_price / 100))
-    })
+  // Hàm tính tổng tiền
+   this.toltal();
+
   }
 
   // Tăng số lượng
@@ -39,9 +35,9 @@ export class CartComponent implements OnInit {
         if(item._id === _id){
             item.quantity +=1;
             localStorage.setItem('cart', JSON.stringify(this.cart));
+            this.toltal();
         }
     });
-   
   }
 
   // Giảm số lượng
@@ -49,18 +45,29 @@ export class CartComponent implements OnInit {
     this.cart.forEach((item) =>{
       if(item._id === _id){
           item.quantity -=1;
-          if(item.quantity < 1){
-              item.quantity = 1;
-          }
           localStorage.setItem('cart', JSON.stringify(this.cart));
+          this.toltalMoney -= item.price - (item.price * item.sale_price / 100);
+          if(item.quantity <= 1){
+              item.quantity = 1;
+              this.toltal();
+          }
       }
   });
   }
-
+  
   removeCart(_id:string){
     this.cart = this.cart.filter(item => item._id !== _id);
     localStorage.setItem('cart', JSON.stringify(this.cart));    
+    this.toltal();
     this.toastr.success("Xóa sản phẩm thành công !")
   }
 
+  toltal(){
+     // Tính tổng tiền phải trả
+    this.toltalMoney = 0;
+    this.cart.forEach((item)=>{
+        this.toltalMoney += item.quantity * (item.price - (item.price * item.sale_price / 100))
+        localStorage.setItem("totalMoney",JSON.stringify(this.toltalMoney));
+    })
+  }
 }

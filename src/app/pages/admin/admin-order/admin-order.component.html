@@ -1,0 +1,26 @@
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên</th>
+                <th>Email</th>
+                <th>SĐT</th>
+                <th>Địa chỉ</th>
+                <th>Ghi chú</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of order; let i = index">
+                <td>{{i}}</td>
+                <td>{{item.lastname}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.address}}</td>
+                <td>{{item.note}}</td>
+                <td><a routerLink="/admin/order/orderDetails/{{item._id}}"><button class="btn btn-info">Xem chi tiết</button></a></td>            
+            </tr>
+        </tbody>
+    </table>
+</div>
+

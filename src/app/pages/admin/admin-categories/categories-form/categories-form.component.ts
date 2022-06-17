@@ -1,6 +1,7 @@
+import { ToastrService } from 'ngx-toastr';
 import { CategoriesService } from './../../../../services/categories.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,14 +17,13 @@ export class CategoriesFormComponent implements OnInit {
   constructor(
     private CategoriesService:CategoriesService,
     private Router:Router,
-    private ActivatedRoute:ActivatedRoute 
+    private ActivatedRoute:ActivatedRoute,
+    private toastr:ToastrService
   ) {
       this.CategoryForm = new FormGroup({
         name: new FormControl('', [
-          Validators.required,
-          this.onValidateNameHasCategory
+          Validators.required
         ]),
-        status: new FormControl(0, Validators.required)
       })
     this.CategoryId = ''
    }
@@ -41,14 +41,6 @@ export class CategoriesFormComponent implements OnInit {
     }
   }
 
-  onValidateNameHasCategory(control: AbstractControl): ValidationErrors|null{
-    const inputValue = control.value;
-    if(!inputValue.includes('Sách')){
-      return {HasCategoryError: true}
-    }
-    return null;
-  }
-
   redireactTolist(){
     this.Router.navigateByUrl("/admin/categories");
   }
@@ -59,11 +51,13 @@ export class CategoriesFormComponent implements OnInit {
     if(this.CategoryId !== "" && this.CategoryId !== undefined){
       return this.CategoriesService.editCategory(this.CategoryId,data).subscribe(data =>{
         this.redireactTolist();
+        this.toastr.success("Sửa thành công !")
       })
     }
 
     return this.CategoriesService.createCategory(data).subscribe(data =>{
         this.redireactTolist();
+        this.toastr.success("Thêm thành công !")
     })
   }
 

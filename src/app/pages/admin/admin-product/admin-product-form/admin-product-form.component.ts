@@ -1,7 +1,8 @@
+import { ToastrService } from 'ngx-toastr';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ProductService } from './../../../../services/product.service';
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TypeCategories } from 'src/app/types/Categories';
 
@@ -18,7 +19,8 @@ export class AdminProductFormComponent implements OnInit {
     private ProductService: ProductService,
     private router: Router,
     private CategoriesService:CategoriesService,
-    private ActivatedRoute: ActivatedRoute // Lấy các tham số trên url
+    private ActivatedRoute: ActivatedRoute, // Lấy các tham số trên url
+    private toastr: ToastrService
     ) {
     this.productForm = new FormGroup({
         name: new FormControl('',[
@@ -31,7 +33,6 @@ export class AdminProductFormComponent implements OnInit {
         image: new FormControl('',Validators.required),
         sale_price: new FormControl(0, Validators.required),
         description: new FormControl('', Validators.required),
-        status: new FormControl(0, Validators.required),
         category: new FormControl('', Validators.required),
     })
     this.productId = '';
@@ -51,15 +52,6 @@ export class AdminProductFormComponent implements OnInit {
     })
   }
 
-  // onValidateNameHasProduct(control: AbstractControl): ValidationErrors|null{
-  //   const inputValue = control.value;
-  //   if(!inputValue.includes('Sách')){
-  //     return {hasProductError:true}
-  //   }
-  //   return null;
-  // }
-
-  // Hàm trở về
   redireactTolist(){
     this.router.navigateByUrl("/admin/products");
   }
@@ -70,11 +62,13 @@ export class AdminProductFormComponent implements OnInit {
     if(this.productId !== '' && this.productId !== undefined){
       return this.ProductService.editProduct(this.productId, data).subscribe(data =>{
         this.redireactTolist();
+        this.toastr.success("Sửa thành công !");
       })
     }
 
     return this.ProductService.createProduct(data).subscribe(data =>{
         this.redireactTolist();
+        this.toastr.success("Thêm thành công !");
     })
   }
 

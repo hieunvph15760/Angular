@@ -1,3 +1,4 @@
+import { AdminOrderDetailsComponent } from './pages/admin/admin-order-details/admin-order-details.component';
 import { ListContactComponent } from './pages/admin/admin-contact/list-contact/list-contact.component';
 import { UsersFormComponent } from './pages/admin/admin-users/users-form/users-form.component';
 import { ListUsersComponent } from './pages/admin/admin-users/list-users/list-users.component';
@@ -19,6 +20,7 @@ import { ClientLayoutComponent } from './layouts/client-layout/client-layout.com
 import { HomeComponent } from './pages/client/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminOrderComponent } from './pages/admin/admin-order/admin-order.component';
 
 const routes: Routes = [
   {
@@ -131,6 +133,19 @@ const routes: Routes = [
           {
             path:'',
             component:ListContactComponent
+          }
+        ]
+      },
+      {
+        path:'order',
+        children:[
+          {
+            path:'',
+            component:AdminOrderComponent
+          },
+          {
+            path:'orderDetails/:_id',
+            component:AdminOrderDetailsComponent
           }
         ]
       }

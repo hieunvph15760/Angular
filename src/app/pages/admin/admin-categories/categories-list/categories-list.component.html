@@ -12,7 +12,10 @@
             <tr *ngFor="let category of Categories; let i = index">
                 <td>{{i}}</td>
                 <td>{{category.name}}</td>
-                <td>{{category.status}}</td>
+                <td>
+                    <button *ngIf="category.status === 1" class="btn btn-success" (click)="updateStatus(category._id,0)">ON</button>
+                    <button *ngIf="category.status === 0" class="btn btn-success" (click)="updateStatus(category._id,1)">OFF</button>
+                </td>
                 <td><button class="btn btn-info" (click)="onRemove(category._id)">Xóa</button></td>
                 <td><a routerLink="/admin/categories/edit/{{category._id}}"><button class="btn btn-info">Sửa</button></a></td>
             </tr>
