@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { FormComponent } from './form/form.component';
 import { ComponentComponent } from './component/component.component';
 import { HomeComponent } from './pages/client/home/home.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
@@ -38,7 +37,6 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent,
     ComponentComponent,
     HomeComponent,
     ClientLayoutComponent,
