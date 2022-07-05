@@ -7,7 +7,6 @@ export const environment = {
   users: `${apiUrl}/users`,
   categories: `${apiUrl}/categories`,
   categoriesDetails: `${apiUrl}/categoriesDetails`,
-  contact: `${apiUrl}/contact`,
   litmitBooks: `${apiUrl}/litmitBooks`,
   searchBooks: `${apiUrl}/searchBooks`,
   login: `${apiUrl}/signin`,

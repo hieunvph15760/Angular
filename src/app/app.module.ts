@@ -14,7 +14,6 @@ import { AdminProductFormComponent } from './pages/admin/admin-product/admin-pro
 import { AdminProductDetailComponent } from './pages/admin/admin-product/admin-product-detail/admin-product-detail.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ProductsComponent } from './pages/client/products/products.component';
-import { ContactComponent } from './pages/client/contact/contact.component';
 import { ProductDetailsComponent } from './pages/client/product-details/product-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
@@ -31,7 +30,6 @@ import { CartComponent } from './pages/client/cart/cart.component';
 import { CheckOutComponent } from './pages/client/check-out/check-out.component';
 import { ListUsersComponent } from './pages/admin/admin-users/list-users/list-users.component';
 import { UsersFormComponent } from './pages/admin/admin-users/users-form/users-form.component';
-import { ListContactComponent } from './pages/admin/admin-contact/list-contact/list-contact.component';
 import { AdminOrderComponent } from './pages/admin/admin-order/admin-order.component';
 import { AdminOrderDetailsComponent } from './pages/admin/admin-order-details/admin-order-details.component';
 
@@ -49,7 +47,6 @@ registerLocaleData(en);
     AdminProductFormComponent,
     AdminProductDetailComponent,
     ProductsComponent,
-    ContactComponent,
     ProductDetailsComponent,
     LoginComponent,
     CategoriesListComponent,
@@ -59,7 +56,6 @@ registerLocaleData(en);
     CheckOutComponent,
     ListUsersComponent,
     UsersFormComponent,
-    ListContactComponent,
     AdminOrderComponent,
     AdminOrderDetailsComponent
   ],

@@ -1,5 +1,4 @@
 import { AdminOrderDetailsComponent } from './pages/admin/admin-order-details/admin-order-details.component';
-import { ListContactComponent } from './pages/admin/admin-contact/list-contact/list-contact.component';
 import { UsersFormComponent } from './pages/admin/admin-users/users-form/users-form.component';
 import { ListUsersComponent } from './pages/admin/admin-users/list-users/list-users.component';
 import { CheckOutComponent } from './pages/client/check-out/check-out.component';
@@ -11,7 +10,6 @@ import { CategoriesFormComponent } from './pages/admin/admin-categories/categori
 import { CategoriesListComponent } from './pages/admin/admin-categories/categories-list/categories-list.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { ProductDetailsComponent } from './pages/client/product-details/product-details.component';
-import { ContactComponent } from './pages/client/contact/contact.component';
 import { AdminProductFormComponent } from './pages/admin/admin-product/admin-product-form/admin-product-form.component';
 import { AdminProductDetailComponent } from './pages/admin/admin-product/admin-product-detail/admin-product-detail.component';
 import { AdminProductListComponent } from './pages/admin/admin-product/admin-product-list/admin-product-list.component';
@@ -30,10 +28,6 @@ const routes: Routes = [
       {
         path:'',
         component:HomeComponent
-      },
-      {
-        path:'contact',
-        component:ContactComponent
       },
       {
         path:'products',
@@ -124,15 +118,6 @@ const routes: Routes = [
           {
             path:'create',
             component:UsersFormComponent
-          }
-        ]
-      },
-      {
-        path:'contact',
-        children:[
-          {
-            path:'',
-            component:ListContactComponent
           }
         ]
       },
