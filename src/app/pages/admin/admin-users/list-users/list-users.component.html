@@ -6,7 +6,6 @@
                 <th>STT</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Mật khẩu</th>
                 <th>Vai trò</th>
                 <th>Trạng thái</th>
             </tr>
@@ -16,12 +15,9 @@
                 <td>{{i}}</td>
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.password}}</td>
-                <td>{{user.role}}</td>
                 <td *ngIf="user.role === 1">Admin</td>
                 <td *ngIf="user.role === 0">Member</td>
-                <td>{{user.status}}</td>
-                <td><button class="btn btn-info" (click)="onDelete(user._id)">Xóa</button></td>            
+                <td>{{user.status}}</td>           
             </tr>
         </tbody>
     </table>

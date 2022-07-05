@@ -29,14 +29,4 @@ export class ListUsersComponent implements OnInit {
         console.log(this.listUsers);
     })
   }
-
-  onDelete(_id:string){
-    const confirmRemove = window.confirm("Bạn có muốn xóa không ?");
-    if(confirmRemove && _id){
-      this.UsersService.removeUser(_id).subscribe(data =>{
-        this.toastr.success("Xóa thành công !");
-        this.getUsers();
-      })
-    }
-  }
 }
