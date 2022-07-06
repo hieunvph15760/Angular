@@ -69,16 +69,6 @@ export class ProductDetailsComponent implements OnInit {
       ...this.product,
       quantity: this.quantity
     }
-    // const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
-    // const existItem = cartItems.find((item: TypeCart) => item._id === newProduct._id);
-    // if (!existItem) {
-    //   cartItems.push(newProduct);
-    // } else {
-    //   // 3.1 Nếu đã có thì cập nhật số lượng mới = số lượng cũ + thêm
-    //   existItem.quantity += newProduct.quantity;
-    // }
-    // localStorage.setItem('cart', JSON.stringify(cartItems));
-    // this.toastr.success("Thêm vào giỏ hàng thành công !");
     this.localstorage.setItem(newProduct);
     this.quantity = 1;
   }

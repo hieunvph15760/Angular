@@ -47,10 +47,4 @@ export class HomeComponent implements OnInit {
   allProducts(){
     this.onGetList();
   }
-
-  // nextPagination(pagination:number){
-  //   this.ProductService.pagination(pagination).subscribe(data =>{
-  //     this.products = data
-  //   })
-  // }
 }
